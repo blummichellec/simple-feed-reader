@@ -23,6 +23,11 @@ jobs:
       run: dotnet build --configuration Release --no-restore
     - name: Test
       run: dotnet test --no-restore --verbosity normal
+      
+    - uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+        key: "f4ed3d37-103a-4079-842f-c41fbe8acb3a"
 
     - name: Azure WebApp
       uses: Azure/webapps-deploy@v2
